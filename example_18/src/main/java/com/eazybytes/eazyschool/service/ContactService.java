@@ -13,7 +13,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @Slf4j
 //@RequestScope : creates a new contact service bean everytime a contact form is submitted.
 //@SessionScope : creates a new contact service bean for every new session. Observed that opening a new tab in the same browser won't create a new session. Only incognito or changing browser helps creating a new session.
-//@ApplicationScope: creates a single contact service bean. 
+//@ApplicationScope: creates a single contact service bean.
 public class ContactService {
     private int counter = 0;
 
