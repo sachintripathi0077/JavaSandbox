@@ -14,7 +14,8 @@ public class DashboardController {
     public String displayDashboard(Model model, Authentication authentication){
         model.addAttribute("username",authentication.getName());
         model.addAttribute("roles",authentication.getAuthorities().toString());
-
-        return "dashboard.html";
+        // for testing global exception controller
+        throw new RuntimeException("It has benn a bad day!");
+        //return "dashboard.html";
     }
 }
