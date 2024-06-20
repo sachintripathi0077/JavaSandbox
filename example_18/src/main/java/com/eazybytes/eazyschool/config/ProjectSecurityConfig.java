@@ -17,7 +17,7 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf((csrf)->
                 csrf
-                        .disable()
+                        .ignoringRequestMatchers("/saveMsg")
         );
 
         // permits all requests to the web application
@@ -39,6 +39,7 @@ public class ProjectSecurityConfig {
                     .requestMatchers("/about").permitAll()
                     .requestMatchers("/assets/**").permitAll()
                     .requestMatchers("/login").permitAll()
+                    .requestMatchers("/logout").permitAll()
             );
 
         http.formLogin((form)->
