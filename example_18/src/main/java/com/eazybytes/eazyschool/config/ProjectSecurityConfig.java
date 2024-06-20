@@ -15,6 +15,11 @@ public class ProjectSecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf((csrf)->
+                csrf
+                        .disable()
+        );
+
         // permits all requests to the web application
 //        http.authorizeHttpRequests((requests) -> {
 //            ((AuthorizeHttpRequestsConfigurer.AuthorizedUrl)requests.anyRequest()).permitAll();
@@ -25,6 +30,7 @@ public class ProjectSecurityConfig {
 //        });
         http.authorizeHttpRequests((requests) ->
             requests
+                    .requestMatchers("/dashboard").authenticated()
                     .requestMatchers("/home","/").permitAll()
                     .requestMatchers("/holidays/**").permitAll()
                     .requestMatchers("/contact").permitAll()
@@ -32,8 +38,22 @@ public class ProjectSecurityConfig {
                     .requestMatchers("/courses").permitAll()
                     .requestMatchers("/about").permitAll()
                     .requestMatchers("/assets/**").permitAll()
+                    .requestMatchers("/login").permitAll()
             );
-        http.formLogin(Customizer.withDefaults());
+
+        http.formLogin((form)->
+                form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/dashboard")
+                        .failureUrl("/login?error=true").permitAll()
+        );
+
+        http.logout((logout)->
+                logout
+                        .logoutSuccessUrl("/login?logout=true")
+                        .invalidateHttpSession(true)
+                        .permitAll()
+        );
         http.httpBasic(Customizer.withDefaults());
         return (SecurityFilterChain)http.build();
     }
