@@ -1,5 +1,6 @@
 package com.eazybytes.eazyschool.config;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -18,6 +19,7 @@ public class ProjectSecurityConfig {
         http.csrf((csrf)->
                 csrf
                         .ignoringRequestMatchers("/saveMsg")
+                        .ignoringRequestMatchers(PathRequest.toH2Console())
         );
 
         // permits all requests to the web application
@@ -40,6 +42,7 @@ public class ProjectSecurityConfig {
                     .requestMatchers("/assets/**").permitAll()
                     .requestMatchers("/login").permitAll()
                     .requestMatchers("/logout").permitAll()
+                    .requestMatchers(PathRequest.toH2Console()).permitAll()
             );
 
         http.formLogin((form)->
