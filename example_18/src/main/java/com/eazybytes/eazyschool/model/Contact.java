@@ -7,7 +7,11 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class Contact {
+public class Contact extends BaseEntity{
+
+    private int contactId;
+    private String status;
+
     @NotBlank(message = "Name must not be blank")
     @Size(min = 3, message = "Name must be at least 3 characters long ")
     private String name;
