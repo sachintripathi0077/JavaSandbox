@@ -45,6 +45,8 @@ public class ProjectSecurityConfig {
                     .requestMatchers(mvcMatcherBuilder.pattern("/assets/**")).permitAll()
                     .requestMatchers(mvcMatcherBuilder.pattern("/login")).permitAll()
                     .requestMatchers(mvcMatcherBuilder.pattern("/logout")).permitAll()
+                    .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
+                    .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
                     .requestMatchers(PathRequest.toH2Console()).permitAll())
 
 
