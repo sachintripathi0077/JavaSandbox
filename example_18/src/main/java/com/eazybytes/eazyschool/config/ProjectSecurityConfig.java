@@ -20,7 +20,9 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
         MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
         http.csrf((csrf)->
-                        csrf.ignoringRequestMatchers(mvcMatcherBuilder.pattern("/saveMsg")))
+                        csrf
+                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/saveMsg"))
+                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/public/**")))
 
 
         // permits all requests to the web application
@@ -45,7 +47,8 @@ public class ProjectSecurityConfig {
                     .requestMatchers(mvcMatcherBuilder.pattern("/login")).permitAll()
                     .requestMatchers(mvcMatcherBuilder.pattern("/logout")).permitAll()
                     .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
-                    .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN"))
+                    .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
+                    .requestMatchers(mvcMatcherBuilder.pattern("/public/**")).permitAll())
 
 
         .formLogin((loginConfigurer)->
