@@ -20,8 +20,7 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
         MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
         http.csrf((csrf)->
-                        csrf.ignoringRequestMatchers(mvcMatcherBuilder.pattern("/saveMsg"))
-                        .ignoringRequestMatchers(PathRequest.toH2Console()))
+                        csrf.ignoringRequestMatchers(mvcMatcherBuilder.pattern("/saveMsg")))
 
 
         // permits all requests to the web application
@@ -46,8 +45,7 @@ public class ProjectSecurityConfig {
                     .requestMatchers(mvcMatcherBuilder.pattern("/login")).permitAll()
                     .requestMatchers(mvcMatcherBuilder.pattern("/logout")).permitAll()
                     .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
-                    .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
-                    .requestMatchers(PathRequest.toH2Console()).permitAll())
+                    .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN"))
 
 
         .formLogin((loginConfigurer)->
@@ -61,16 +59,8 @@ public class ProjectSecurityConfig {
                         .logoutSuccessUrl("/login?logout=true")
                         .invalidateHttpSession(true)
                         .permitAll())
-        .httpBasic(Customizer.withDefaults());
 
-        // disable frame options to allow h2 console to render its frames
-        http.headers((headersConfigurer)->
-                    headersConfigurer
-                            .frameOptions((framesConfigurer)->
-                                        framesConfigurer
-                                                .disable()
-                                    )
-                );
+        .httpBasic(Customizer.withDefaults());
 
         return http.build();
     }
