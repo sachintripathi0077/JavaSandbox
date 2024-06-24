@@ -27,3 +27,7 @@ INSERT INTO `roles` (`role_name`,`created_at`, `created_by`)
 
 INSERT INTO `roles` (`role_name`,`created_at`, `created_by`)
   VALUES ('STUDENT',CURDATE(),'DBA');
+
+--admin password:admin stored in BCrypt hash
+INSERT INTO `person` (`name`,`email`,`mobile_number`,`pwd`,`role_id`,`created_at`,`created_by`)
+    VALUES ('Admin','admin@gmail.com','1234567890','$2a$12$00rWOCz3LVzR9MV0SAeJFO8LmT0EA8wSlGFRNXVlJBz.xGPfmTofu',1,CURDATE(),'DBA');

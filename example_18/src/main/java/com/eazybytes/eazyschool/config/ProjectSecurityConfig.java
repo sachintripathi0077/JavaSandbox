@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
@@ -68,20 +70,9 @@ public class ProjectSecurityConfig {
         return http.build();
     }
 
-    // adding temporary user and details
     @Bean
-    public InMemoryUserDetailsManager userDetailsService(){
-        UserDetails admin = User.withDefaultPasswordEncoder()
-                .username("admin")
-                .password("123")
-                .roles("USER","ADMIN")
-                .build();
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("321")
-                .roles("USER")
-                .build();
-
-        return new InMemoryUserDetailsManager(admin,user);
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
+
 }
