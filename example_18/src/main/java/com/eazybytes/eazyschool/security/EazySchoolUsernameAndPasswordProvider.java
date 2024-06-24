@@ -35,7 +35,7 @@ public class EazySchoolUsernameAndPasswordProvider implements AuthenticationProv
         Person person = personRepository.readByEmail(email);
         log.info("Person object returned by personRepository.readByEmail(email): "+person);
         if(null != person && person.getPersonId()>0 && passwordEncoder.matches(password,person.getPassword())){
-            return new UsernamePasswordAuthenticationToken(person.getName(),null,getGrantedAuthorities(person.getRoles()));
+            return new UsernamePasswordAuthenticationToken(email,null,getGrantedAuthorities(person.getRoles()));
         } else {
             throw new BadCredentialsException("Invalid Credentials!");
         }
