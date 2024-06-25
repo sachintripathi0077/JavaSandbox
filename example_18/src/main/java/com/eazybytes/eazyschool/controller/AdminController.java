@@ -4,6 +4,7 @@ import com.eazybytes.eazyschool.model.EazyClass;
 import com.eazybytes.eazyschool.model.Person;
 import com.eazybytes.eazyschool.repository.ClassRepository;
 import com.eazybytes.eazyschool.repository.PersonRepository;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,8 +60,59 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/displayStudents",method = RequestMethod.GET)
-    public ModelAndView displayStudents(Model model, @RequestParam int classId){
+    public ModelAndView displayStudents(Model model, @RequestParam int classId, HttpSession httpSession,
+                                        @RequestParam(value = "error",required = false) String error){
         ModelAndView modelAndView = new ModelAndView("students.html");
+        Optional<EazyClass> optionalEazyClass = classRepository.findById(classId);
+        EazyClass eazyClass;
+        if (optionalEazyClass.isPresent()) {
+            eazyClass = optionalEazyClass.get();
+            modelAndView.addObject("eazyClass", eazyClass);
+            modelAndView.addObject("person", new Person());
+            httpSession.setAttribute("eazyClass", eazyClass);
+            httpSession.setAttribute("eazyClass",eazyClass);
+        } else {
+            // Handle case where classId is not found
+            modelAndView.addObject("errorMessage", "Class not found for id: " + classId);
+            // Optionally redirect or show an error page
+        }
+        if(error != null){
+            String errorMessage = "Invalid email entered!";
+            modelAndView.addObject("errorMessage",errorMessage);
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "deleteStudent", method = RequestMethod.GET)
+    public ModelAndView deleteStudent(Model model, @RequestParam int personId, HttpSession httpSession){
+        EazyClass eazyClass = (EazyClass) httpSession.getAttribute("eazyClass");
+        Optional<Person> person = personRepository.findById(personId);
+        person.get().setEazyClass(null); // as we don't want to remove the person permanently from the db, but just want to disassociate the class
+        eazyClass.getPersons().remove(person.get());
+        EazyClass eazyClassSaved = classRepository.save(eazyClass);
+        httpSession.setAttribute("eazyClass",eazyClassSaved);
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/displayStudents?classId="+eazyClass.getClassId());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+    public ModelAndView addStudent(Model model, @ModelAttribute("person") Person person, HttpSession httpSession){
+        ModelAndView modelAndView = new ModelAndView();
+        EazyClass eazyClass = (EazyClass) httpSession.getAttribute("eazyClass");
+        Person personEntity = personRepository.readByEmail(person.getEmail());
+
+        if(null == personEntity){
+            // if there is not such person that exists with that email
+            modelAndView.setViewName("redirect:/admin/displayStudents?classId="+eazyClass.getClassId()+"&error=true");
+            return modelAndView;
+        }
+
+        personEntity.setEazyClass(eazyClass);
+        personRepository.save(personEntity);
+        eazyClass.getPersons().add(personEntity);
+        classRepository.save(eazyClass);
+        modelAndView.setViewName("redirect:/admin/displayStudents?classId="+eazyClass.getClassId());
         return modelAndView;
     }
 }
