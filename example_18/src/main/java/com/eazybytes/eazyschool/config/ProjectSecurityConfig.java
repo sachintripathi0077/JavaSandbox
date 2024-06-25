@@ -52,7 +52,8 @@ public class ProjectSecurityConfig {
                     .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
                     .requestMatchers(mvcMatcherBuilder.pattern("/public/**")).permitAll()
                     .requestMatchers(mvcMatcherBuilder.pattern("/displayProfile")).authenticated()
-                    .requestMatchers(mvcMatcherBuilder.pattern("/updateProfile")).authenticated())
+                    .requestMatchers(mvcMatcherBuilder.pattern("/updateProfile")).authenticated()
+                    .requestMatchers(mvcMatcherBuilder.pattern("/admin/**")).hasRole("ADMIN"))
 
 
         .formLogin((loginConfigurer)->
