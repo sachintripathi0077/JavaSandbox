@@ -54,7 +54,8 @@ public class ProjectSecurityConfig {
                     .requestMatchers(mvcMatcherBuilder.pattern("/displayProfile")).authenticated()
                     .requestMatchers(mvcMatcherBuilder.pattern("/updateProfile")).authenticated()
                     .requestMatchers(mvcMatcherBuilder.pattern("/admin/**")).hasRole("ADMIN")
-                    .requestMatchers(mvcMatcherBuilder.pattern("/student/**")).hasRole("STUDENT"))
+                    .requestMatchers(mvcMatcherBuilder.pattern("/student/**")).hasRole("STUDENT")
+                    .requestMatchers(mvcMatcherBuilder.pattern("/api/**")).authenticated())
 
 
         .formLogin((loginConfigurer)->
