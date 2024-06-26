@@ -9,6 +9,7 @@ import com.eazybytes.eazyschool.repository.PersonRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -124,8 +125,8 @@ public class AdminController {
     @RequestMapping(value = "/displayCourses", method = RequestMethod.GET)
     public ModelAndView displayCourses(Model model){
         ModelAndView modelAndView = new ModelAndView("courses_secure.html");
-        List<Courses> allCourses = coursesRepository.findAll();
-
+//        List<Courses> allCourses = coursesRepository.findByOrderByName();
+        List<Courses> allCourses = coursesRepository.findAll(Sort.by("name").descending());
         modelAndView.addObject("courses",allCourses);
         modelAndView.addObject("course", new Courses());
         return modelAndView;
