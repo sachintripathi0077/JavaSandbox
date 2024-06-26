@@ -11,6 +11,10 @@ import org.hibernate.annotations.GenericGenerator;
 @Data
 @Entity
 @Table(name = "contact_msg")
+@NamedQueries({
+        @NamedQuery(name = "Contact.findOpenMessages",query = "SELECT c FROM Contact c WHERE c.status= :status"),
+        @NamedQuery(name = "Contact.updateMessageStatus", query = "UPDATE Contact c SET c.status = :status WHERE c.contactId = :contactId")
+})
 public class Contact extends BaseEntity{
 
     @Column(name = "contact_id")
