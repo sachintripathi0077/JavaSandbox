@@ -24,7 +24,8 @@ public class ProjectSecurityConfig {
         http.csrf((csrf)->
                         csrf
                                 .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/saveMsg"))
-                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/public/**")))
+                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/public/**"))
+                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/api/**")))
 
 
         // permits all requests to the web application
