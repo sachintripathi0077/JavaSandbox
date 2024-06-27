@@ -29,6 +29,15 @@ public class DashboardController {
         }
         // for testing global exception controller
         //throw new RuntimeException("It has benn a bad day!");
+        logMessages();
         return "dashboard.html";
+    }
+
+    private void logMessages(){
+        log.error("Error message from the dashboard controller.");
+        log.warn("Warning message from the dashboard controller.");
+        log.info("Info message from the dashboard controller.");
+        log.debug("Debug message from the dashboard controller.");
+        log.trace("Trace message from the dashboard controller.");
     }
 }
