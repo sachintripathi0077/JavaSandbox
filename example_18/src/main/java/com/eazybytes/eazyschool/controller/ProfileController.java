@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
-@Controller
+@Controller("profileControllerBean") // added bean name to prevent clash with bean created by spring data rest
 public class ProfileController {
 
     @Autowired

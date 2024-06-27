@@ -25,7 +25,8 @@ public class ProjectSecurityConfig {
                         csrf
                                 .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/saveMsg"))
                                 .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/public/**"))
-                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/api/**")))
+                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/api/**"))
+                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/data-api/**")))
 
 
         // permits all requests to the web application
@@ -56,7 +57,8 @@ public class ProjectSecurityConfig {
                     .requestMatchers(mvcMatcherBuilder.pattern("/updateProfile")).authenticated()
                     .requestMatchers(mvcMatcherBuilder.pattern("/admin/**")).hasRole("ADMIN")
                     .requestMatchers(mvcMatcherBuilder.pattern("/student/**")).hasRole("STUDENT")
-                    .requestMatchers(mvcMatcherBuilder.pattern("/api/**")).authenticated())
+                    .requestMatchers(mvcMatcherBuilder.pattern("/api/**")).authenticated()
+                    .requestMatchers(mvcMatcherBuilder.pattern("/data-api/**")).authenticated())
 
 
         .formLogin((loginConfigurer)->
