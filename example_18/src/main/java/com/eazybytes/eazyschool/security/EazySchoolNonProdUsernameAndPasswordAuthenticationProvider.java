@@ -19,11 +19,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @Component
-@Profile("prod") // conditional creation of bean based on activation profile
-public class EazySchoolUsernameAndPasswordProvider implements AuthenticationProvider {
-
+@Slf4j
+@Profile("!prod")
+public class EazySchoolNonProdUsernameAndPasswordAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private PersonRepository personRepository;
 
@@ -36,7 +35,9 @@ public class EazySchoolUsernameAndPasswordProvider implements AuthenticationProv
         String password = authentication.getCredentials().toString();
         Person person = personRepository.readByEmail(email);
         log.info("Person object returned by personRepository.readByEmail(email): "+person);
-        if(null != person && person.getPersonId()>0 && passwordEncoder.matches(password,person.getPassword())){
+
+        // No matching for password for non production environment
+        if(null != person && person.getPersonId()>0){
             return new UsernamePasswordAuthenticationToken(email,null,getGrantedAuthorities(person.getRoles()));
         } else {
             throw new BadCredentialsException("Invalid Credentials!");
