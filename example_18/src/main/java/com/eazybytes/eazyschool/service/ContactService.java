@@ -1,5 +1,6 @@
 package com.eazybytes.eazyschool.service;
 
+import com.eazybytes.eazyschool.config.EazySchoolProps;
 import com.eazybytes.eazyschool.constants.EazySchoolConstants;
 import com.eazybytes.eazyschool.model.Contact;
 import com.eazybytes.eazyschool.repository.ContactRepository;
@@ -24,8 +25,11 @@ import java.util.Optional;
 //@SessionScope : creates a new contact service bean for every new session. Observed that opening a new tab in the same browser won't create a new session. Only incognito or changing browser helps creating a new session.
 //@ApplicationScope: creates a single contact service bean.
 public class ContactService {
-
+    @Autowired
     private ContactRepository contactRepository;
+
+    @Autowired
+    private EazySchoolProps eazySchoolProps;
 
     @Autowired
     public ContactService(ContactRepository contactRepository){
@@ -62,7 +66,11 @@ public class ContactService {
     }
 
     public Page<Contact> findMessagesWithOpenStatus(int pageNum, String sortField, String sortDir) {
-        int pageSize = 5;
+        int pageSize = eazySchoolProps.getPageSize();
+        // setting specific page size for contact page
+        if(eazySchoolProps.getContact() != null && eazySchoolProps.getContact().get("pageSize") != null){
+            pageSize = Integer.parseInt(eazySchoolProps.getContact().get("pageSize").trim());
+        }
         Pageable pageable = PageRequest.of(pageNum-1,
                 pageSize,sortDir.equals("asc")? Sort.by(sortField).ascending() : Sort.by(sortField).descending());
         Page<Contact> messagePage = contactRepository.findByStatusWithQuery(EazySchoolConstants.OPEN,pageable);
