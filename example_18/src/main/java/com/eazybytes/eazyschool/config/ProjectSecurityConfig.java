@@ -26,7 +26,8 @@ public class ProjectSecurityConfig {
                                 .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/saveMsg"))
                                 .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/public/**"))
                                 .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/api/**"))
-                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/data-api/**")))
+                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/data-api/**"))
+                                .ignoringRequestMatchers(mvcMatcherBuilder.pattern("/eazyschool/actuator/**")))
 
 
         // permits all requests to the web application
@@ -58,7 +59,8 @@ public class ProjectSecurityConfig {
                     .requestMatchers(mvcMatcherBuilder.pattern("/admin/**")).hasRole("ADMIN")
                     .requestMatchers(mvcMatcherBuilder.pattern("/student/**")).hasRole("STUDENT")
                     .requestMatchers(mvcMatcherBuilder.pattern("/api/**")).authenticated()
-                    .requestMatchers(mvcMatcherBuilder.pattern("/data-api/**")).authenticated())
+                    .requestMatchers(mvcMatcherBuilder.pattern("/data-api/**")).authenticated()
+                    .requestMatchers(mvcMatcherBuilder.pattern("/eazyschool/actuator/**")).hasRole("ADMIN"))
 
 
         .formLogin((loginConfigurer)->
