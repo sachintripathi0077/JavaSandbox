@@ -1,10 +1,13 @@
 package com.dev.accounts.service.impl;
 
 import com.dev.accounts.constants.AccountConstants;
+import com.dev.accounts.dto.CustomerAccountDto;
 import com.dev.accounts.dto.CustomerDto;
 import com.dev.accounts.entity.Account;
 import com.dev.accounts.entity.Customer;
 import com.dev.accounts.exception.CustomerAlreadyExistException;
+import com.dev.accounts.exception.ResourceNotFoundException;
+import com.dev.accounts.mapper.CustomerAcoountMapper;
 import com.dev.accounts.mapper.CustomerMapper;
 import com.dev.accounts.repository.AccountRepository;
 import com.dev.accounts.repository.CustomerRepository;
@@ -47,6 +50,30 @@ public class AccountServiceImpl implements IAccountService {
         accountRepository.save(createNewAccount(savedCustomer));
     }
 
+    /**
+     * @param mobileNumber - String Object
+     */
+    @Override
+    public CustomerAccountDto fetchAccount(String mobileNumber) {
+        // fetch logic for customer
+        Optional<Customer> customerOptional = customerRepository.findByMobileNumber(mobileNumber);
+        if(!customerOptional.isPresent()){
+            throw new ResourceNotFoundException("Customer","mobileNumber",mobileNumber);
+        }
+
+        // fetch logic for account
+        Optional<Account> accountOptional= accountRepository.findByCustomerId(customerOptional.get().getCustomerId());
+        if(!accountOptional.isPresent()){
+            throw new ResourceNotFoundException("Account","customerId",customerOptional.get().getCustomerId().toString());
+        }
+
+        // mapping the fetched data to CustomerAccountDto
+        CustomerAccountDto customerAccountDto = CustomerAcoountMapper.mapToCustomerAccountDto(customerOptional.get(),
+                accountOptional.get(), new CustomerAccountDto());
+
+        return customerAccountDto;
+    }
+
     private Account createNewAccount(Customer customer){
         // creating bank account with the given customer details
         Account account = new Account();
@@ -57,4 +84,6 @@ public class AccountServiceImpl implements IAccountService {
 
         return account;
     }
+
+
 }

@@ -27,4 +27,19 @@ public class GlobalExceptionHandler {
         // wrapping this errorResponseDto in ResponseEntity
         return new ResponseEntity<>(errorResponseDto,HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponseDto> resourceNotFoundException(ResourceNotFoundException exception,
+                                                                           WebRequest webRequest){
+        // Populating error response dto
+        ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+                webRequest.getDescription(false),
+                HttpStatus.NOT_FOUND,
+                exception.getMessage(),
+                LocalDateTime.now()
+        );
+
+        // wrapping this errorResponseDto in ResponseEntity
+        return new ResponseEntity<>(errorResponseDto,HttpStatus.NOT_FOUND);
+    }
 }

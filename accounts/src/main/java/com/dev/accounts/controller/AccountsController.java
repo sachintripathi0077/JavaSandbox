@@ -1,6 +1,7 @@
 package com.dev.accounts.controller;
 
 import com.dev.accounts.constants.AccountConstants;
+import com.dev.accounts.dto.CustomerAccountDto;
 import com.dev.accounts.dto.CustomerDto;
 import com.dev.accounts.dto.ResponseDto;
 import com.dev.accounts.service.IAccountService;
@@ -29,5 +30,13 @@ public class AccountsController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new ResponseDto(AccountConstants.STATUS_201,AccountConstants.MESSAGE_201));
+    }
+
+    @GetMapping("/fetch")
+    public ResponseEntity<CustomerAccountDto> fetchAccountDetails(@RequestParam String mobileNumber){
+        CustomerAccountDto customerAccountDto = accountService.fetchAccount(mobileNumber);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(customerAccountDto);
     }
 }
