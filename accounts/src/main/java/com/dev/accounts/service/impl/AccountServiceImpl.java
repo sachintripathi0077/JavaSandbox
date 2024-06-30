@@ -1,6 +1,7 @@
 package com.dev.accounts.service.impl;
 
 import com.dev.accounts.constants.AccountConstants;
+import com.dev.accounts.dto.AccountDto;
 import com.dev.accounts.dto.CustomerAccountDto;
 import com.dev.accounts.dto.CustomerDto;
 import com.dev.accounts.entity.Account;
@@ -74,6 +75,47 @@ public class AccountServiceImpl implements IAccountService {
         return customerAccountDto;
     }
 
+    @Override
+    public boolean updateAccount(CustomerAccountDto customerAccountDto) {
+        // Getting account details based on the customerDto
+        AccountDto accountDto = CustomerAcoountMapper.mapToAccountDto(customerAccountDto);
+        Optional<Account> accountOptional = accountRepository.findById(accountDto.getAccountNumber());
+        if(!accountOptional.isPresent()){
+            throw new ResourceNotFoundException("Account","Account Number",accountDto.getAccountNumber().toString());
+        }
+
+        // updating the account/customer details using the fetched account information from db
+        accountOptional.get().setAccountType(customerAccountDto.getAccountType());
+        accountOptional.get().setBranchAddress(customerAccountDto.getBranchAddress());
+        accountOptional.get().setUpdated_at(LocalDateTime.now());
+        accountOptional.get().setUpdated_by("Again Me");
+        accountRepository.save(accountOptional.get());
+
+        // fetching customer details for update
+        Optional<Customer> customerOptional = customerRepository.findById(accountOptional.get().getCustomerId());
+        if(!customerOptional.isPresent()){
+            throw new ResourceNotFoundException("Customer","Customer Id", accountOptional.get().getCustomerId().toString());
+        }
+        customerOptional.get().setName(customerAccountDto.getName());
+        customerOptional.get().setEmail(customerAccountDto.getEmail());
+        customerOptional.get().setMobileNumber(customerAccountDto.getMobileNumber());
+        customerOptional.get().setUpdated_at(LocalDateTime.now());
+        customerOptional.get().setUpdated_by("Again Me");
+        customerRepository.save(customerOptional.get());
+        return true;
+    }
+
+    @Override
+    public boolean deleteAccount(String mobileNumber) {
+        Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
+                ()-> new ResourceNotFoundException("Customer","Mobile Number", mobileNumber)
+        );
+
+        accountRepository.deleteByCustomerId(customer.getCustomerId());
+        customerRepository.deleteById(customer.getCustomerId());
+        return true;
+    }
+
     private Account createNewAccount(Customer customer){
         // creating bank account with the given customer details
         Account account = new Account();
@@ -81,6 +123,8 @@ public class AccountServiceImpl implements IAccountService {
         account.setBranchAddress(AccountConstants.ADDRESS);
         account.setAccountNumber(100000000L + new Random().nextInt(900000000));
         account.setAccountType(AccountConstants.SAVINGS);
+        account.setCreated_by("Me");
+        account.setCreated_at(LocalDateTime.now());
 
         return account;
     }

@@ -16,4 +16,8 @@ public interface IAccountService {
      * @param mobileNumber - String Object
      */
     public CustomerAccountDto fetchAccount(String mobileNumber);
+
+    boolean updateAccount(CustomerAccountDto customerAccountDto);
+
+    boolean deleteAccount(String mobileNumber);
 }
