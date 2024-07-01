@@ -17,4 +17,5 @@ public class AccountConstants {
     public static final String  STATUS_500 = "500";
     public static final String  MESSAGE_500 = "An error occurred while processing your request. SBI me account khulwa lijiye. ^_^";
 
+
 }
