@@ -12,7 +12,7 @@ public class Loan extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "loan_id")
-    private int loadId;
+    private int loanId;
 
     @Column(name = "mobile_number")
     private String mobileNumber;

@@ -1,11 +1,12 @@
 package com.dev.loans.controller;
 
-import com.dev.loans.LoanService;
+import com.dev.loans.service.LoanService;
 import com.dev.loans.constants.LoanConstants;
 import com.dev.loans.dto.LoanDto;
 import com.dev.loans.dto.ResponseDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,12 +16,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Slf4j
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
+@AllArgsConstructor
 public class LoanController {
 
-    @Autowired
     private LoanService loanService;
 
     @GetMapping(value = "/helloWorld")

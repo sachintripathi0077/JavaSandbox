@@ -4,7 +4,8 @@ public class LoanConstants {
 
     // restricting instantiation
     private LoanConstants(){}
-
+    public static final String  HOME_LOAN = "Home Loan";
+    public static final int  NEW_LOAN_LIMIT = 1_00_000;
     public static final String  SAVINGS = "House";
     public static final String  ADDRESS = "123 Main Street, New York";
     public static final String  STATUS_201 = "201";

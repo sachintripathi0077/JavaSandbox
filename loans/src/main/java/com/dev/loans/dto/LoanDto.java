@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class LoanDto {
     // Not exposing loan_id, customer_id
 
@@ -15,7 +14,7 @@ public class LoanDto {
 
     @NotEmpty(message = "Loan Number can not be a null or empty")
     @Pattern(regexp="(^$|[0-9]{12})",message = "LoanNumber must be 12 digits")
-    private String loadNumber;
+    private String loanNumber;
 
     @NotEmpty(message = "LoanType can not be a null or empty")
     private String loanType;

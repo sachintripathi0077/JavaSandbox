@@ -13,7 +13,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
-@Entity
+
 @MappedSuperclass
 @Getter
 @Setter
@@ -29,7 +29,7 @@ public class BaseEntity {
 
     @Column(name = "updated_at", insertable = false)
     @LastModifiedDate
-    private LoanController updatedAt;
+    private LocalDateTime updatedAt;
 
     @Column(name = "updated_by", insertable = false)
     @LastModifiedBy
