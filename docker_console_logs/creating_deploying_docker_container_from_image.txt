@@ -1,0 +1,147 @@
+/**
+* Building Docker Container:
+
+* -Use docker run command to create a container from a Docker image.
+* -Port mapping is necessary to expose the container’s ports to the external network.
+* -Example command: docker run -p 8080:8080 eazybytes/accounts:S4.
+* Detached Mode:
+*
+* -Running containers in detached mode (-d) allows other commands to be executed in the terminal.
+* -Check running containers using docker ps.
+**/
+
+=========== Without Detached Mode ======================
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker images
+REPOSITORY                   TAG       IMAGE ID       CREATED          SIZE
+iamsachintripathi/accounts   S4        46ae71b644c2   47 minutes ago   464MB
+docker/welcome-to-docker     latest    c1f619b6477e   7 months ago     18.6MB
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker run -p 8080:8080 iamsachintripathi/accounts:S4
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.1)
+
+2024-07-02T19:43:01.737Z  INFO 1 --- [accounts] [           main] com.dev.accounts.AccountsApplication     : Starting AccountsApplication v0.0.1-SNAPSHOT using Java 17.0.2 with PID 1 (/accounts-0.0.1-SNAPSHOT.jar started by root in /)
+2024-07-02T19:43:01.742Z  INFO 1 --- [accounts] [           main] com.dev.accounts.AccountsApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-07-02T19:43:03.537Z  INFO 1 --- [accounts] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-02T19:43:03.614Z  INFO 1 --- [accounts] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 2 JPA repository interfaces.
+2024-07-02T19:43:04.535Z  INFO 1 --- [accounts] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-02T19:43:04.557Z  INFO 1 --- [accounts] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-02T19:43:04.557Z  INFO 1 --- [accounts] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-02T19:43:04.631Z  INFO 1 --- [accounts] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-02T19:43:04.633Z  INFO 1 --- [accounts] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2724 ms
+2024-07-02T19:43:04.822Z  INFO 1 --- [accounts] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-02T19:43:05.114Z  INFO 1 --- [accounts] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-07-02T19:43:05.118Z  INFO 1 --- [accounts] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-02T19:43:05.137Z  INFO 1 --- [accounts] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-07-02T19:43:05.398Z  INFO 1 --- [accounts] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-02T19:43:05.473Z  INFO 1 --- [accounts] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-02T19:43:05.515Z  INFO 1 --- [accounts] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-02T19:43:05.847Z  INFO 1 --- [accounts] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-02T19:43:05.897Z  WARN 1 --- [accounts] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-02T19:43:07.011Z  INFO 1 --- [accounts] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-02T19:43:07.059Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column account_number set data type bigint
+Hibernate: alter table if exists accounts alter column account_number set data type bigint
+2024-07-02T19:43:07.070Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column created_at set data type timestamp(6)
+Hibernate: alter table if exists accounts alter column created_at set data type timestamp(6)
+2024-07-02T19:43:07.078Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column created_by set data type varchar(255)
+Hibernate: alter table if exists accounts alter column created_by set data type varchar(255)
+2024-07-02T19:43:07.079Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column updated_at set data type timestamp(6)
+Hibernate: alter table if exists accounts alter column updated_at set data type timestamp(6)
+2024-07-02T19:43:07.085Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column updated_by set data type varchar(255)
+Hibernate: alter table if exists accounts alter column updated_by set data type varchar(255)
+2024-07-02T19:43:07.090Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column account_type set data type varchar(255)
+Hibernate: alter table if exists accounts alter column account_type set data type varchar(255)
+2024-07-02T19:43:07.092Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column branch_address set data type varchar(255)
+Hibernate: alter table if exists accounts alter column branch_address set data type varchar(255)
+2024-07-02T19:43:07.094Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column customer_id set data type bigint
+Hibernate: alter table if exists accounts alter column customer_id set data type bigint
+2024-07-02T19:43:07.100Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column customer_id set data type bigint
+Hibernate: alter table if exists customer alter column customer_id set data type bigint
+2024-07-02T19:43:07.104Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column created_at set data type timestamp(6)
+Hibernate: alter table if exists customer alter column created_at set data type timestamp(6)
+2024-07-02T19:43:07.111Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column created_by set data type varchar(255)
+Hibernate: alter table if exists customer alter column created_by set data type varchar(255)
+2024-07-02T19:43:07.111Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column updated_at set data type timestamp(6)
+Hibernate: alter table if exists customer alter column updated_at set data type timestamp(6)
+2024-07-02T19:43:07.116Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column updated_by set data type varchar(255)
+Hibernate: alter table if exists customer alter column updated_by set data type varchar(255)
+2024-07-02T19:43:07.120Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column email set data type varchar(255)
+Hibernate: alter table if exists customer alter column email set data type varchar(255)
+2024-07-02T19:43:07.121Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column mobile_number set data type varchar(255)
+Hibernate: alter table if exists customer alter column mobile_number set data type varchar(255)
+2024-07-02T19:43:07.122Z DEBUG 1 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column name set data type varchar(255)
+Hibernate: alter table if exists customer alter column name set data type varchar(255)
+2024-07-02T19:43:07.128Z  INFO 1 --- [accounts] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-02T19:43:07.848Z  WARN 1 --- [accounts] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-02T19:43:08.757Z  INFO 1 --- [accounts] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-07-02T19:43:08.870Z  INFO 1 --- [accounts] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-02T19:43:08.899Z  INFO 1 --- [accounts] [           main] com.dev.accounts.AccountsApplication     : Started AccountsApplication in 7.894 seconds (process running for 8.611)
+
+
+=========================== With detached Mode =========================
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker images
+REPOSITORY                   TAG       IMAGE ID       CREATED          SIZE
+iamsachintripathi/accounts   S4        46ae71b644c2   51 minutes ago   464MB
+docker/welcome-to-docker     latest    c1f619b6477e   7 months ago     18.6MB
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker run -d -p 8080:8080 iamsachintripathi/accounts:S4
+b0ac0cfc8bc9b7a5fe8e22d4110ae9455c105bf60e804802b205e17e94fa1092
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED          STATUS          PORTS                    NAMES
+b0ac0cfc8bc9   iamsachintripathi/accounts:S4     "java -jar accounts-…"   22 seconds ago   Up 21 seconds   0.0.0.0:8080->8080/tcp   elastic_hawking
+888c1da860da   docker/welcome-to-docker:latest   "/docker-entrypoint.…"   2 hours ago      Up 2 hours      0.0.0.0:8088->80/tcp     welcome-to-docker
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED              STATUS                PORTS                    NAMES
+b0ac0cfc8bc9   iamsachintripathi/accounts:S4     "java -jar accounts-…"   About a minute ago   Up About a minute     0.0.0.0:8080->8080/tcp   elastic_hawking
+888c1da860da   docker/welcome-to-docker:latest   "/docker-entrypoint.…"   2 hours ago          Up 2 hours (Paused)   0.0.0.0:8088->80/tcp     welcome-to-docker
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED              STATUS                PORTS                    NAMES
+b0ac0cfc8bc9   iamsachintripathi/accounts:S4     "java -jar accounts-…"   About a minute ago   Up About a minute     0.0.0.0:8080->8080/tcp   elastic_hawking
+888c1da860da   docker/welcome-to-docker:latest   "/docker-entrypoint.…"   2 hours ago          Up 2 hours (Paused)   0.0.0.0:8088->80/tcp     welcome-to-docker
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker ps
+CONTAINER ID   IMAGE                           COMMAND                  CREATED              STATUS              PORTS                    NAMES
+b0ac0cfc8bc9   iamsachintripathi/accounts:S4   "java -jar accounts-…"   About a minute ago   Up About a minute   0.0.0.0:8080->8080/tcp   elastic_hawking
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker ps -a
+CONTAINER ID   IMAGE                             COMMAND                  CREATED         STATUS                       PORTS                    NAMES
+b0ac0cfc8bc9   iamsachintripathi/accounts:S4     "java -jar accounts-…"   2 minutes ago   Up 2 minutes                 0.0.0.0:8080->8080/tcp   elastic_hawking
+cbec1de374e1   iamsachintripathi/accounts:S4     "java -jar accounts-…"   3 minutes ago   Exited (130) 2 minutes ago                            relaxed_davinci
+faf699e35888   iamsachintripathi/accounts:S4     "java -jar accounts-…"   7 minutes ago   Exited (130) 6 minutes ago                            nifty_wilbur
+888c1da860da   docker/welcome-to-docker:latest   "/docker-entrypoint.…"   2 hours ago     Exited (0) 19 seconds ago                             welcome-to-docker
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker start b0ac0cfc8bc9b7a5fe8e22d4110ae9455c105bf60e804802b205e17e94fa1092
+b0ac0cfc8bc9b7a5fe8e22d4110ae9455c105bf60e804802b205e17e94fa1092
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker ps
+CONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS         PORTS                    NAMES
+b0ac0cfc8bc9   iamsachintripathi/accounts:S4   "java -jar accounts-…"   5 minutes ago   Up 5 seconds   0.0.0.0:8080->8080/tcp   elastic_hawking
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker stop b0ac0cfc8bc9
+b0ac0cfc8bc9
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker run -d -p 8080:8080 iamsachintripathi/accounts:S4
+84854aabd38cbdbb505ca5415995be1827dc627354f69742df011847986153b6
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker run -d -p 8081:8080 iamsachintripathi/accounts:S4
+425ff144ba2630f077b018167b208a514c40ed517e7b612bb8d8dce0d3cd43ba
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker ps
+CONTAINER ID   IMAGE                           COMMAND                  CREATED              STATUS              PORTS                    NAMES
+425ff144ba26   iamsachintripathi/accounts:S4   "java -jar accounts-…"   3 seconds ago        Up 2 seconds        0.0.0.0:8081->8080/tcp   elastic_banzai
+84854aabd38c   iamsachintripathi/accounts:S4   "java -jar accounts-…"   About a minute ago   Up About a minute   0.0.0.0:8080->8080/tcp   optimistic_fermi
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>
