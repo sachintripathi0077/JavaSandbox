@@ -1,0 +1,297 @@
+/**
+* Building jar and running spring boot project using maven ( mvwn )
+* -> C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts> mvnw clean install  ==> Builds the jar using the pom.xml
+* -> C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>mvnw spring-boot:run ==> Deploys the jar on port 8080
+* The above can also be done using : java -jar target/<JarName>.jar
+**/
+
+============================= CONSOLE OUTPUT ===============================================
+
+Microsoft Windows [Version 10.0.22635.3858]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 847C-FD0A
+
+ Directory of C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts
+
+07/02/2024  11:32 PM    <DIR>          .
+07/02/2024  05:40 PM    <DIR>          ..
+07/02/2024  03:01 AM               428 .gitignore
+07/02/2024  09:26 PM    <DIR>          .idea
+07/02/2024  03:01 AM    <DIR>          .mvn
+06/29/2024  12:46 AM             2,014 HELP.md
+07/02/2024  03:01 AM            10,925 mvnw
+07/02/2024  03:01 AM             7,062 mvnw.cmd
+07/02/2024  11:32 PM             2,713 pom.xml
+07/02/2024  03:01 AM    <DIR>          src
+07/02/2024  11:34 PM    <DIR>          target
+               5 File(s)         23,142 bytes
+               6 Dir(s)  20,400,115,712 bytes free
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>mvn -version
+'mvn' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>mvn -v
+'mvn' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>mvnw -version
+Apache Maven 3.9.7 (8b094c9513efc1b9ce2d952b3b9c8eaedaf8cbf0)
+Maven home: C:\Users\HP\.m2\wrapper\dists\apache-maven-3.9.7\744dcc12d591e1ad9413e3296c618fd8
+Java version: 17.0.7, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-17
+Default locale: en_US, platform encoding: Cp1252
+OS name: "windows 11", version: "10.0", arch: "amd64", family: "windows"
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>mvnw clean install
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------------< com.dev:accounts >--------------------------
+[INFO] Building accounts 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.3.2:clean (default-clean) @ accounts ---
+[INFO] Deleting C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts\target
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ accounts ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ accounts ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 24 source files with javac [debug parameters release 17] to target\classes
+[WARNING] /C:/Users/HP/Desktop/JavaSandbox/JavaSandbox/accounts/src/main/java/com/dev/accounts/entity/Account.java:[8,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+[WARNING] /C:/Users/HP/Desktop/JavaSandbox/JavaSandbox/accounts/src/main/java/com/dev/accounts/entity/Customer.java:[8,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ accounts ---
+[INFO] skip non existing resourceDirectory C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts\src\test\resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ accounts ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 17] to target\test-classes
+[INFO]
+[INFO] --- surefire:3.2.5:test (default-test) @ accounts ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.pom (4.7 kB at 9.1 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.2.5/surefire-providers-3.2.5.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.2.5/surefire-providers-3.2.5.pom (2.6 kB at 43 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.pom (2.8 kB at 57 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom (3.0 kB at 61 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar (27 kB at 357 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar (169 kB at 1.5 MB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar (18 kB at 135 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.2/junit-platform-launcher-1.10.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.2/junit-platform-launcher-1.10.2.pom (3.0 kB at 41 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.2/junit-platform-launcher-1.10.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.2/junit-platform-launcher-1.10.2.jar (184 kB at 1.4 MB/s)
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.dev.accounts.AccountsApplicationTests
+23:36:52.039 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.dev.accounts.AccountsApplicationTests]: AccountsApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:36:52.208 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.dev.accounts.AccountsApplication for test class com.dev.accounts.AccountsApplicationTests
+23:36:52.482 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.1)
+
+2024-07-02T23:36:52.941+05:30  INFO 8952 --- [accounts] [           main] c.dev.accounts.AccountsApplicationTests  : Starting AccountsApplicationTests using Java 17.0.7 with PID 8952 (started by HP in C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts)
+2024-07-02T23:36:52.941+05:30  INFO 8952 --- [accounts] [           main] c.dev.accounts.AccountsApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2024-07-02T23:36:54.888+05:30  INFO 8952 --- [accounts] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-02T23:36:54.989+05:30  INFO 8952 --- [accounts] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94 ms. Found 2 JPA repository interfaces.
+2024-07-02T23:36:56.229+05:30  INFO 8952 --- [accounts] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-02T23:36:57.080+05:30  INFO 8952 --- [accounts] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-07-02T23:36:57.080+05:30  INFO 8952 --- [accounts] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-02T23:36:57.398+05:30  INFO 8952 --- [accounts] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-02T23:36:57.611+05:30  INFO 8952 --- [accounts] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-02T23:36:57.740+05:30  INFO 8952 --- [accounts] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-02T23:36:58.518+05:30  INFO 8952 --- [accounts] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-02T23:36:58.628+05:30  WARN 8952 --- [accounts] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-02T23:37:00.208+05:30  INFO 8952 --- [accounts] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-02T23:37:00.269+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column account_number set data type bigint
+Hibernate: alter table if exists accounts alter column account_number set data type bigint
+2024-07-02T23:37:00.288+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column created_at set data type timestamp(6)
+Hibernate: alter table if exists accounts alter column created_at set data type timestamp(6)
+2024-07-02T23:37:00.292+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column created_by set data type varchar(255)
+Hibernate: alter table if exists accounts alter column created_by set data type varchar(255)
+2024-07-02T23:37:00.292+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column updated_at set data type timestamp(6)
+Hibernate: alter table if exists accounts alter column updated_at set data type timestamp(6)
+2024-07-02T23:37:00.295+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column updated_by set data type varchar(255)
+Hibernate: alter table if exists accounts alter column updated_by set data type varchar(255)
+2024-07-02T23:37:00.298+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column account_type set data type varchar(255)
+Hibernate: alter table if exists accounts alter column account_type set data type varchar(255)
+2024-07-02T23:37:00.299+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column branch_address set data type varchar(255)
+Hibernate: alter table if exists accounts alter column branch_address set data type varchar(255)
+2024-07-02T23:37:00.299+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists accounts alter column customer_id set data type bigint
+Hibernate: alter table if exists accounts alter column customer_id set data type bigint
+2024-07-02T23:37:00.300+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column customer_id set data type bigint
+Hibernate: alter table if exists customer alter column customer_id set data type bigint
+2024-07-02T23:37:00.305+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column created_at set data type timestamp(6)
+Hibernate: alter table if exists customer alter column created_at set data type timestamp(6)
+2024-07-02T23:37:00.308+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column created_by set data type varchar(255)
+Hibernate: alter table if exists customer alter column created_by set data type varchar(255)
+2024-07-02T23:37:00.308+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column updated_at set data type timestamp(6)
+Hibernate: alter table if exists customer alter column updated_at set data type timestamp(6)
+2024-07-02T23:37:00.308+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column updated_by set data type varchar(255)
+Hibernate: alter table if exists customer alter column updated_by set data type varchar(255)
+2024-07-02T23:37:00.318+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column email set data type varchar(255)
+Hibernate: alter table if exists customer alter column email set data type varchar(255)
+2024-07-02T23:37:00.319+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column mobile_number set data type varchar(255)
+Hibernate: alter table if exists customer alter column mobile_number set data type varchar(255)
+2024-07-02T23:37:00.319+05:30 DEBUG 8952 --- [accounts] [           main] org.hibernate.SQL                        : alter table if exists customer alter column name set data type varchar(255)
+Hibernate: alter table if exists customer alter column name set data type varchar(255)
+2024-07-02T23:37:00.319+05:30  INFO 8952 --- [accounts] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-02T23:37:01.694+05:30  WARN 8952 --- [accounts] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-02T23:37:03.210+05:30  INFO 8952 --- [accounts] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-07-02T23:37:03.300+05:30  INFO 8952 --- [accounts] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-07-02T23:37:03.500+05:30  INFO 8952 --- [accounts] [           main] c.dev.accounts.AccountsApplicationTests  : Started AccountsApplicationTests in 11.038 seconds (process running for 12.413)
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.63 s -- in com.dev.accounts.AccountsApplicationTests
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jar:3.4.2:jar (default-jar) @ accounts ---
+[INFO] Building jar: C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts\target\accounts-0.0.1-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot:3.3.1:repackage (repackage) @ accounts ---
+[INFO] Replacing main artifact C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts\target\accounts-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts\target\accounts-0.0.1-SNAPSHOT.jar.original
+[INFO]
+[INFO] --- install:3.1.2:install (default-install) @ accounts ---
+[INFO] Installing C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts\pom.xml to C:\Users\HP\.m2\repository\com\dev\accounts\0.0.1-SNAPSHOT\accounts-0.0.1-SNAPSHOT.pom
+[INFO] Installing C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts\target\accounts-0.0.1-SNAPSHOT.jar to C:\Users\HP\.m2\repository\com\dev\accounts\0.0.1-SNAPSHOT\accounts-0.0.1-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  24.845 s
+[INFO] Finished at: 2024-07-02T23:37:06+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>mvnw spring-boot:run
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------------< com.dev:accounts >--------------------------
+[INFO] Building accounts 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] >>> spring-boot:3.3.1:run (default-cli) > test-compile @ accounts >>>
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ accounts ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO]
+[INFO] --- compiler:3.13.0:compile (default-compile) @ accounts ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ accounts ---
+[INFO] skip non existing resourceDirectory C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts\src\test\resources
+[INFO]
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ accounts ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] <<< spring-boot:3.3.1:run (default-cli) < test-compile @ accounts <<<
+[INFO]
+[INFO]
+[INFO] --- spring-boot:3.3.1:run (default-cli) @ accounts ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.1)
+
+2024-07-02T23:40:27.608+05:30  INFO 3276 --- [accounts] [  restartedMain] com.dev.accounts.AccountsApplication     : Starting AccountsApplication using Java 17.0.7 with PID 3276 (C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts\target\classes started by HP in C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts)
+2024-07-02T23:40:27.608+05:30  INFO 3276 --- [accounts] [  restartedMain] com.dev.accounts.AccountsApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-07-02T23:40:27.688+05:30  INFO 3276 --- [accounts] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-02T23:40:27.688+05:30  INFO 3276 --- [accounts] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-02T23:40:28.839+05:30  INFO 3276 --- [accounts] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-02T23:40:28.918+05:30  INFO 3276 --- [accounts] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 2 JPA repository interfaces.
+2024-07-02T23:40:29.775+05:30  INFO 3276 --- [accounts] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-07-02T23:40:29.788+05:30  INFO 3276 --- [accounts] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-02T23:40:29.788+05:30  INFO 3276 --- [accounts] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-02T23:40:29.839+05:30  INFO 3276 --- [accounts] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-02T23:40:29.848+05:30  INFO 3276 --- [accounts] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2151 ms
+2024-07-02T23:40:29.980+05:30  INFO 3276 --- [accounts] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-02T23:40:30.174+05:30  INFO 3276 --- [accounts] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-07-02T23:40:30.176+05:30  INFO 3276 --- [accounts] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-02T23:40:30.188+05:30  INFO 3276 --- [accounts] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-07-02T23:40:30.428+05:30  INFO 3276 --- [accounts] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-02T23:40:30.488+05:30  INFO 3276 --- [accounts] [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-02T23:40:30.532+05:30  INFO 3276 --- [accounts] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-02T23:40:30.876+05:30  INFO 3276 --- [accounts] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-02T23:40:30.937+05:30  WARN 3276 --- [accounts] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-02T23:40:31.880+05:30  INFO 3276 --- [accounts] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-02T23:40:31.938+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists accounts alter column account_number set data type bigint
+Hibernate: alter table if exists accounts alter column account_number set data type bigint
+2024-07-02T23:40:31.949+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists accounts alter column created_at set data type timestamp(6)
+Hibernate: alter table if exists accounts alter column created_at set data type timestamp(6)
+2024-07-02T23:40:31.955+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists accounts alter column created_by set data type varchar(255)
+Hibernate: alter table if exists accounts alter column created_by set data type varchar(255)
+2024-07-02T23:40:31.956+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists accounts alter column updated_at set data type timestamp(6)
+Hibernate: alter table if exists accounts alter column updated_at set data type timestamp(6)
+2024-07-02T23:40:31.960+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists accounts alter column updated_by set data type varchar(255)
+Hibernate: alter table if exists accounts alter column updated_by set data type varchar(255)
+2024-07-02T23:40:31.964+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists accounts alter column account_type set data type varchar(255)
+Hibernate: alter table if exists accounts alter column account_type set data type varchar(255)
+2024-07-02T23:40:31.964+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists accounts alter column branch_address set data type varchar(255)
+Hibernate: alter table if exists accounts alter column branch_address set data type varchar(255)
+2024-07-02T23:40:31.965+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists accounts alter column customer_id set data type bigint
+Hibernate: alter table if exists accounts alter column customer_id set data type bigint
+2024-07-02T23:40:31.973+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists customer alter column customer_id set data type bigint
+Hibernate: alter table if exists customer alter column customer_id set data type bigint
+2024-07-02T23:40:31.976+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists customer alter column created_at set data type timestamp(6)
+Hibernate: alter table if exists customer alter column created_at set data type timestamp(6)
+2024-07-02T23:40:31.981+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists customer alter column created_by set data type varchar(255)
+Hibernate: alter table if exists customer alter column created_by set data type varchar(255)
+2024-07-02T23:40:31.982+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists customer alter column updated_at set data type timestamp(6)
+Hibernate: alter table if exists customer alter column updated_at set data type timestamp(6)
+2024-07-02T23:40:31.987+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists customer alter column updated_by set data type varchar(255)
+Hibernate: alter table if exists customer alter column updated_by set data type varchar(255)
+2024-07-02T23:40:31.988+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists customer alter column email set data type varchar(255)
+Hibernate: alter table if exists customer alter column email set data type varchar(255)
+2024-07-02T23:40:31.988+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists customer alter column mobile_number set data type varchar(255)
+Hibernate: alter table if exists customer alter column mobile_number set data type varchar(255)
+2024-07-02T23:40:31.988+05:30 DEBUG 3276 --- [accounts] [  restartedMain] org.hibernate.SQL                        : alter table if exists customer alter column name set data type varchar(255)
+Hibernate: alter table if exists customer alter column name set data type varchar(255)
+2024-07-02T23:40:31.988+05:30  INFO 3276 --- [accounts] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-02T23:40:32.582+05:30  WARN 3276 --- [accounts] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-02T23:40:33.339+05:30  INFO 3276 --- [accounts] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-07-02T23:40:33.355+05:30  INFO 3276 --- [accounts] [  restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-07-02T23:40:33.437+05:30  INFO 3276 --- [accounts] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-07-02T23:40:33.459+05:30  INFO 3276 --- [accounts] [  restartedMain] com.dev.accounts.AccountsApplication     : Started AccountsApplication in 6.338 seconds (process running for 6.795)
+^CTerminate batch job (Y/N)? 2024-07-02T23:41:26.937+05:30  INFO 3276 --- [accounts] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-02T23:41:26.937+05:30  WARN 3276 --- [accounts] [ionShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-07-02T23:41:26.937+05:30  INFO 3276 --- [accounts] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-02T23:41:26.947+05:30  INFO 3276 --- [accounts] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:03 min
+[INFO] Finished at: 2024-07-02T23:41:27+05:30
+[INFO] ------------------------------------------------------------------------

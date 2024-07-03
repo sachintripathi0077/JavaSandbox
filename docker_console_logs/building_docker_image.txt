@@ -1,0 +1,161 @@
+/**
+*	-Prepare Dockerfile: The Dockerfile is ready inside the Accounts microservice directory.
+*	-Verify Docker Installation: Ensure Docker is installed and running by using the docker version command.
+*	-Build Docker Image: Use the docker build command to create a Docker image. The command format is docker build . -t <docker_account>/<image_name>:<tag>.
+*	-Tagging the Image: The image name includes the Docker Hub username, microservice name, and tag/version.
+*	-Inspect Docker Image: Use docker inspect to view detailed information about the created Docker image.
+*	-Verify Image Creation: Use docker images to list and verify the created Docker image.
+*	-Docker Desktop: Check the image details and layers using Docker Desktop.
+**/
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker build . -t iamsachintripathi/accounts:S4
+[+] Building 0.2s (1/1) FINISHED                                                                                                                                                            docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                                                                        0.1s
+ => => transferring dockerfile: 2B                                                                                                                                                                          0.0s
+ERROR: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 847C-FD0A
+
+ Directory of C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts
+
+07/02/2024  11:57 PM    <DIR>          .
+07/03/2024  12:09 AM    <DIR>          ..
+07/02/2024  03:01 AM               428 .gitignore
+07/02/2024  11:48 PM    <DIR>          .idea
+07/02/2024  03:01 AM    <DIR>          .mvn
+07/02/2024  11:57 PM               341 DockerFile
+06/29/2024  12:46 AM             2,014 HELP.md
+07/02/2024  03:01 AM            10,925 mvnw
+07/02/2024  03:01 AM             7,062 mvnw.cmd
+07/02/2024  11:32 PM             2,713 pom.xml
+07/02/2024  03:01 AM    <DIR>          src
+07/02/2024  11:37 PM    <DIR>          target
+               6 File(s)         23,483 bytes
+               6 Dir(s)  20,220,899,328 bytes free
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker build . -t iamsachintripathi/accounts:S4
+[+] Building 26.2s (7/7) FINISHED                                                                                                                                                           docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                                                                        0.0s
+ => => transferring dockerfile: 380B                                                                                                                                                                        0.0s
+ => [internal] load metadata for docker.io/library/openjdk:17-jdk-slim                                                                                                                                      1.9s
+ => [internal] load .dockerignore                                                                                                                                                                           0.0s
+ => => transferring context: 2B                                                                                                                                                                             0.0s
+ => [internal] load build context                                                                                                                                                                           3.9s
+ => => transferring context: 56.57MB                                                                                                                                                                        3.9s
+ => [1/2] FROM docker.io/library/openjdk:17-jdk-slim@sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774                                                                               22.6s
+ => => resolve docker.io/library/openjdk:17-jdk-slim@sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774                                                                                0.0s
+ => => sha256:779635c0c3d23cc8dbab2d8c1ee4cf2a9202e198dfc8f4c0b279824d9b8e0f22 953B / 953B                                                                                                                  0.0s
+ => => sha256:37cb44321d0423bc57266a3bff658daf00478e4cdf2d3b8091f785310534256d 4.80kB / 4.80kB                                                                                                              0.0s
+ => => sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3 31.38MB / 31.38MB                                                                                                            4.2s
+ => => sha256:44d3aa8d076675d49d85180b0ced9daef210fe4fdff4bdbb422b9cf384e591d0 1.58MB / 1.58MB                                                                                                              2.1s
+ => => sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56 187.90MB / 187.90MB                                                                                                         18.8s
+ => => sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774 547B / 547B                                                                                                                  0.0s
+ => => extracting sha256:1fe172e4850f03bb45d41a20174112bc119fbfec42a650edbbd8491aee32e3c3                                                                                                                   3.3s
+ => => extracting sha256:44d3aa8d076675d49d85180b0ced9daef210fe4fdff4bdbb422b9cf384e591d0                                                                                                                   0.2s
+ => => extracting sha256:6ce99fdf16e86bd02f6ad66a0e1334878528b5a4b5487850a76e0c08a7a27d56                                                                                                                   3.7s
+ => [2/2] COPY target/accounts-0.0.1-SNAPSHOT.jar accounts-0.0.1-SNAPSHOT.jar                                                                                                                               1.3s
+ => exporting to image                                                                                                                                                                                      0.3s
+ => => exporting layers                                                                                                                                                                                     0.3s
+ => => writing image sha256:46ae71b644c284f70fd05c4c6159568ef44a41d8d0a4c37490b8923e4a26d107                                                                                                                0.0s
+ => => naming to docker.io/iamsachintripathi/accounts:S4                                                                                                                                                    0.0s
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker images
+REPOSITORY                   TAG       IMAGE ID       CREATED              SIZE
+iamsachintripathi/accounts   S4        46ae71b644c2   About a minute ago   464MB
+docker/welcome-to-docker     latest    c1f619b6477e   7 months ago         18.6MB
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>docker inspect image 46ae71b644c2
+[
+    {
+        "Id": "sha256:46ae71b644c284f70fd05c4c6159568ef44a41d8d0a4c37490b8923e4a26d107",
+        "RepoTags": [
+            "iamsachintripathi/accounts:S4"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2024-07-02T18:51:49.109969718Z",
+        "ContainerConfig": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": null
+        },
+        "DockerVersion": "",
+        "Author": "MicroBank.com",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/openjdk-17/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "JAVA_HOME=/usr/local/openjdk-17",
+                "LANG=C.UTF-8",
+                "JAVA_VERSION=17.0.2"
+            ],
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "java",
+                "-jar",
+                "accounts-0.0.1-SNAPSHOT.jar"
+            ],
+            "OnBuild": null,
+            "Labels": null
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 464302612,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/044bd254da72ed33135e6bdcd070c88b13270f5829c3bec4cb9a6edabf2009cf/diff:/var/lib/docker/overlay2/abb6b1ec9857634c8b5345897489a862662143a9f67077d47506a7150c5df50d/diff:/var/lib/docker/overlay2/113fe8e07d304647d6c633e078a26a83ac1e4f2449f4c02838ba3ffde31b2304/diff",
+                "MergedDir": "/var/lib/docker/overlay2/forfz32cz7zw3mkla8phg7vxp/merged",
+                "UpperDir": "/var/lib/docker/overlay2/forfz32cz7zw3mkla8phg7vxp/diff",
+                "WorkDir": "/var/lib/docker/overlay2/forfz32cz7zw3mkla8phg7vxp/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:9c1b6dd6c1e6be9fdd2b1987783824670d3b0dd7ae8ad6f57dc3cea5739ac71e",
+                "sha256:13a34b6fff7804cf7f6e8f52a4cf25ceb2e32fc35a6f39e8158074c64831ebf0",
+                "sha256:6be690267e47ddcfd965449d2af70a9eca9879f9436948ee83d7f4ad473b8e64",
+                "sha256:b1bc1223f1fa13a8d88c7575f6bcf6638994c0e9ff1ded7c553810514cc74f6f"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2024-07-02T18:51:49.388576288Z"
+        },
+        "Container": ""
+    }
+]
+Error: No such object: image
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\accounts>

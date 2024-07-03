@@ -1,0 +1,78 @@
+/**
+* Pushing docker images to remote docker repositories
+**/
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>docker images
+REPOSITORY                            TAG       IMAGE ID       CREATED        SIZE
+iamsachintripathi/accounts            S4        46ae71b644c2   12 hours ago   464MB
+paketobuildpacks/run-jammy-base       latest    67794c521e27   6 days ago     110MB
+docker/welcome-to-docker              latest    c1f619b6477e   7 months ago   18.6MB
+paketobuildpacks/builder-jammy-base   latest    54eb05d53d60   44 years ago   1.56GB
+iamsachintripathi/loans               S4        f6395f688b0c   44 years ago   354MB
+iamsachintripathi/cards               S4        37c5240d5dbf   54 years ago   313MB
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>docker run -d -p 9000:9000 iamsachintripathi/cards:S4
+e0b0dfde33fca30f3e8d73d7db88ab4d3322dd071ad3f4de7329844fc7645c66
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>docker images
+REPOSITORY                            TAG       IMAGE ID       CREATED        SIZE
+iamsachintripathi/accounts            S4        46ae71b644c2   13 hours ago   464MB
+paketobuildpacks/run-jammy-base       latest    67794c521e27   6 days ago     110MB
+docker/welcome-to-docker              latest    c1f619b6477e   7 months ago   18.6MB
+iamsachintripathi/loans               S4        f6395f688b0c   44 years ago   354MB
+paketobuildpacks/builder-jammy-base   latest    54eb05d53d60   44 years ago   1.56GB
+iamsachintripathi/cards               S4        37c5240d5dbf   54 years ago   313MB
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>docker image push docker.io/iamsachintripathi/accounts:S4
+The push refers to repository [docker.io/iamsachintripathi/accounts]
+b1bc1223f1fa: Pushed
+6be690267e47: Mounted from library/openjdk
+13a34b6fff78: Mounted from library/openjdk
+9c1b6dd6c1e6: Mounted from library/openjdk
+S4: digest: sha256:af91070e0bc219fc9e754fb36cc1973e156476d28e1288541b6ea681f6729720 size: 1165
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>docker image push docker.io/iamsachintripathi/cards:S4
+The push refers to repository [docker.io/iamsachintripathi/cards]
+bd8ad6ed3ad7: Pushed
+3c76945abcbe: Pushed
+7fe6d1721054: Pushed
+96934bbf4e5a: Pushed
+52e87c25af26: Pushed
+783ce3350b0f: Pushed
+b4bca94bcdf8: Pushed
+6b55d85ee844: Pushed
+931b7ff0cb6f: Pushed
+S4: digest: sha256:dc2a87321f1c0267431b6c6f18a6d00b2d2cdecb5b5a98b891ba68d4aab3297b size: 2204
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>docker image push docker.io/iamsachintripathi/loans:S4
+The push refers to repository [docker.io/iamsachintripathi/loans]
+1dc94a70dbaa: Pushed
+0c8c9d557d7d: Pushed
+4371ffcd1bd6: Pushed
+5f70bf18a086: Mounted from paketobuildpacks/builder-jammy-base
+a37c1a397765: Pushed
+60349f544042: Pushed
+8aa323d6a3b4: Pushed
+f8131ce40548: Pushed
+366ce7d1a7f9: Pushed
+ce4e86e0307e: Pushed
+638af5c4a866: Pushed
+417e5bfc3c82: Pushed
+5bc94934a9b9: Pushed
+bea0a3dc2651: Pushed
+dc028be89aa8: Pushed
+8aebab80fae8: Pushed
+d1d830c3bc41: Mounted from paketobuildpacks/run-jammy-base
+1add63dacc81: Mounted from paketobuildpacks/run-jammy-base
+19a84bd830c9: Mounted from paketobuildpacks/run-jammy-base
+0b9c994b0484: Mounted from paketobuildpacks/run-jammy-base
+S4: digest: sha256:fa77ece6f0fb478d089db1e1c12175eac771271b5c122b1ab40134a7c5bffbad size: 4707
+
+C:\Users\HP\Desktop\JavaSandbox\JavaSandbox\cards>
