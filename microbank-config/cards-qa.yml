@@ -1,13 +1,8 @@
-spring:
-  config:
-    activate:
-      on-profile: "qa"
-
 build:
   version: "2.0"
 
 cards:
-  message: "Welcome to MicroBank cards related local APIs "
+  message: "Welcome to MicroBank CARDS related local APIs: ENVIRONMENT : QA  "
   contactDetails:
     name: "Peggy Carter - QA Lead"
     email: "captiancarter@microbank.com"

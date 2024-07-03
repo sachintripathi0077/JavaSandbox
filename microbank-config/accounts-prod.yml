@@ -1,14 +1,9 @@
-spring:
-  config:
-    activate:
-      on-profile: "prod"
-
 build:
   version: "1.0"
 
 
 accounts:
-  message: "Welcome to EazyBank accounts related local APIs "
+  message: "Welcome to MicroBank ACCOUNTS related local APIs: ENVIRONMENT: PROD "
   contactDetails:
     name: "Sachin Tripathi - Dev Lead"
     email: "iamtripathi@microbank.com"

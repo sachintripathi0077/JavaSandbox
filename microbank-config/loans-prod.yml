@@ -1,13 +1,8 @@
-spring:
-  config:
-    activate:
-      on-profile: "prod"
-
 build:
   version: "1.0"
 
 cards:
-  message: "Welcome to MicroBank cards related local APIs "
+  message: "Welcome to MicroBank LOANS related local APIs: ENVIRONMENT: PROD  "
   contactDetails:
     name: "Tony Stark - Developer's Lead"
     email: "youknowme@microbank.com"
