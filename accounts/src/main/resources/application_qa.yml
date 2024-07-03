@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+
+build:
+  version: "2.0"
+
+
+accounts:
+  message: "Welcome to EazyBank accounts related local APIs "
+  contactDetails:
+    name: "Steven Strange - QA Lead"
+    email: "itisstrange@microbank.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345

@@ -14,3 +14,21 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  config:
+    imports:
+      - "application_dev.yml"
+      - "application_qa.yml"
+  profiles:
+    active: "prod"
+
+build:
+  verison: "3.0"
+
+loan:
+  message: "Welcome to MicroBank Loans related local APIs "
+  contactDetails:
+    name: "Peter PArker - Developer"
+    email: "friendlyneighbour@microbank.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345

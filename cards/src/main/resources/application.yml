@@ -14,3 +14,21 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  config:
+    imports:
+      - "application_prod.yml"
+      - "application_qa.yml"
+  profiles:
+    active: "qa"
+
+build:
+  version: "3.0"
+cards:
+  message: "Welcome to MicroBank cards related local APIs "
+  contactDetails:
+    name: "Natasha Romonof - Developer"
+    email: "window@microbank.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345
+

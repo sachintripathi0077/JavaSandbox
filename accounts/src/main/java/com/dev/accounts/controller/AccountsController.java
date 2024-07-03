@@ -1,10 +1,7 @@
 package com.dev.accounts.controller;
 
 import com.dev.accounts.constants.AccountConstants;
-import com.dev.accounts.dto.CustomerAccountDto;
-import com.dev.accounts.dto.CustomerDto;
-import com.dev.accounts.dto.ErrorResponseDto;
-import com.dev.accounts.dto.ResponseDto;
+import com.dev.accounts.dto.*;
 import com.dev.accounts.service.IAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -15,6 +12,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +29,26 @@ import org.springframework.web.bind.annotation.*;
 )
 @RestController
 @RequestMapping(path = "/api",produces = MediaType.APPLICATION_JSON_VALUE)
-@AllArgsConstructor
+//@AllArgsConstructor -> removing temporarily to work with buildVersion field, else its bean being not present will mess up
 @Validated
+@Slf4j
 public class AccountsController {
 
 //    @Autowired  // using constructor autowiring instead
-    private IAccountService accountService;
+    private final IAccountService accountService;
+
+    public AccountsController(IAccountService iAccountService){
+        this.accountService = iAccountService;
+    }
+
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private Environment environment;
+
+    @Autowired
+    private AccountsContactInfoDto accountsContactInfoDto;
 
     @GetMapping("/hello")
     public String hello(){
@@ -146,5 +162,26 @@ public class AccountsController {
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ResponseDto(AccountConstants.STATUS_500,AccountConstants.MESSAGE_500));
         }
+    }
+
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
+    }
+
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(environment.getProperty("JAVA_HOME"));
+    }
+
+    @GetMapping("/contact-info")
+    public ResponseEntity<AccountsContactInfoDto> getContactInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(accountsContactInfoDto);
     }
 }
