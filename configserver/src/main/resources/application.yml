@@ -1,0 +1,22 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        native:
+        # search-location: "classpath:/config"
+        git:
+          uri: https://github.com/sachintripathi0077/microbank_configs.git
+          default-label: "main"
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+          username: sachintripathi0077
+          password: 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
+

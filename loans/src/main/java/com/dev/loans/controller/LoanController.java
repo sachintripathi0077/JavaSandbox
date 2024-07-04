@@ -1,5 +1,6 @@
 package com.dev.loans.controller;
 
+import com.dev.loans.dto.LoansContactInfoDto;
 import com.dev.loans.service.LoanService;
 import com.dev.loans.constants.LoanConstants;
 import com.dev.loans.dto.LoanDto;
@@ -9,6 +10,8 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +21,23 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
-@AllArgsConstructor
+//@AllArgsConstructor
 public class LoanController {
 
-    private LoanService loanService;
+    private final LoanService loanService;
+
+    public LoanController(LoanService loanService){
+        this.loanService = loanService;
+    }
+
+    @Autowired
+    private LoansContactInfoDto loansContactInfoDto;
+
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private Environment environment;
 
     @GetMapping(value = "/helloWorld")
     public String sayHello(){
@@ -77,5 +93,26 @@ public class LoanController {
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(LoanConstants.STATUS_417,LoanConstants.MESSAGE_417_DELETE));
         }
+    }
+
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
+    }
+
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(environment.getProperty("JAVA_HOME"));
+    }
+
+    @GetMapping("/contact-info")
+    public ResponseEntity<LoansContactInfoDto> getContactInfo(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(loansContactInfoDto);
     }
 }
