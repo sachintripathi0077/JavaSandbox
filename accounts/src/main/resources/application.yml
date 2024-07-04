@@ -20,3 +20,10 @@ spring:
     active: "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
+
+# adding management utility for refresh related endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

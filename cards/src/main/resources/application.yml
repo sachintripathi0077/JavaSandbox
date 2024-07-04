@@ -20,6 +20,10 @@ spring:
     active: "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
-logging:
-  level:
-    org.springframework.cloud: DEBUG
+
+# adding management utility for refresh related endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
