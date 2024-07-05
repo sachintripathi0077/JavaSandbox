@@ -20,6 +20,17 @@ spring:
     active: "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
+  # enabling cloud bus for mq
+#  cloud:
+#    bus:
+#      enabled: true
+#      refresh: true
+  # Connection details for rabbitmq
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
 
 # adding management utility for refresh related endpoints
 management:
