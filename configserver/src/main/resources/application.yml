@@ -20,12 +20,6 @@ spring:
           username: sachintripathi0077
           password: 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
 
-  # Connection details for rabbitmq
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
 
 # adding management utility for monitor endpoints
 management:
