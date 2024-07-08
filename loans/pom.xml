@@ -122,7 +122,7 @@
 				<version>3.3.2</version>
 				<configuration>
 					<to>
-						<image>iamsachintripathi/${project.artifactId}:S6</image>
+						<image>iamsachintripathi/${project.artifactId}:S8</image>
 					</to>
 				</configuration>
 			</plugin>

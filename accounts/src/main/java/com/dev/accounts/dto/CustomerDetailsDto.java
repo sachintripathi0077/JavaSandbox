@@ -29,69 +29,14 @@ public class CustomerDetailsDto {
     private String mobileNumber;
 
     // from AccountDto
-
-    @NotNull(message = "Account number must not be blank")
-    @ValidLong(message = "Account number must be of 10 digits")
-    @Schema(description = "Account Number of the customer", example = "Savings")
-    private Long accountNumber;
-
-    @NotEmpty(message = "Account type must not be blank")
-    @Schema(description = "Account Type of the customer", example = "Savings")
-    private String accountType;
-
-    @NotEmpty(message = "Branch Address must not be empty")
-    @Schema(description = "Branch Address of the brank office", example = "5th Street, Glemfem, Hinjewadi")
-    private String branchAddress;
+    @Schema(description = "Account details of the customer")
+    private AccountDto accountDto;
 
     // from CardsDto
-
-    @NotEmpty(message = "Card Number can not be a null or empty")
-    @Pattern(regexp="(^$|[0-9]{12})",message = "CardNumber must be 12 digits")
-    @Schema(
-            description = "Card Number of the customer", example = "100646930341"
-    )
-    private String cardNumber;
-
-    @NotEmpty(message = "CardType can not be a null or empty")
-    @Schema(
-            description = "Type of the card", example = "Credit Card"
-    )
-    private String cardType;
-
-    @Positive(message = "Total card limit should be greater than zero")
-    @Schema(
-            description = "Total amount limit available against a card", example = "100000"
-    )
-    private int totalLimit;
-
-    @PositiveOrZero(message = "Total amount used should be equal or greater than zero")
-    @Schema(
-            description = "Total amount used by a Customer", example = "1000"
-    )
-    private int amountUsed;
-
-    @PositiveOrZero(message = "Total available amount should be equal or greater than zero")
-    @Schema(
-            description = "Total available amount against a card", example = "90000"
-    )
-    private int availableAmount;
-
+    @Schema(description = "Cards details of the customer")
+    private CardsDto cardsDto;
 
     // from LoansDto
-
-    @NotEmpty(message = "Loan Number can not be a null or empty")
-    @Pattern(regexp="(^$|[0-9]{12})",message = "LoanNumber must be 12 digits")
-    private String loanNumber;
-
-    @NotEmpty(message = "LoanType can not be a null or empty")
-    private String loanType;
-
-    @Positive(message = "Total loan amount must be greater than zero.")
-    private int totalLoan;
-
-    @PositiveOrZero(message = "Total loan amount paid must be grater than equal to zero.")
-    private int amountPaid;
-
-    @PositiveOrZero(message = "Total outstanding amount should be equal or greater than zero")
-    private int outstandingAmount;
+    @Schema(description = "Loans details of the customer")
+    private LoanDto loanDto;
 }
