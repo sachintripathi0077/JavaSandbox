@@ -70,7 +70,7 @@
 				<version>3.3.2</version>
 				<configuration>
 					<to>
-						<image>iamsachintripathi/${project.artifactId}:S8</image>
+						<image>iamsachintripathi/${project.artifactId}:S9</image>
 					</to>
 				</configuration>
 			</plugin>

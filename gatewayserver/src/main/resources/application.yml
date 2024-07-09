@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: gatewayserver
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false # disables direct calls to microservices from outside
+          lowerCaseServiceId: true
+
+# adding management utility for refresh related endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: "gatewayserver"
+    description: "MicroBank Gateway Server Application"
+    version: "1.0.0"
+
+
+
