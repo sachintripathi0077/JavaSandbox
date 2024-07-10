@@ -2,7 +2,9 @@ server:
   port: 8090
 spring:
   application:
-    name: loans
+    name: "loans"
+  profiles:
+    active: "prod"
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -16,22 +18,33 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  profiles:
-    active: "prod"
   config:
     import: "optional:configserver:http://localhost:8071/"
 
-# adding management utility for refresh related endpoints
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      probes:
+        enabled: true
   info:
     env:
       enabled: true
 
-# eureka related props
+endpoints:
+  shutdown:
+    enabled: true
+
 eureka:
   instance:
     preferIpAddress: true
@@ -44,11 +57,11 @@ eureka:
 info:
   app:
     name: "loans"
-    description: "MicroBank Loans Application"
+    description: "Micro Bank Loans Application"
     version: "1.0.0"
 
-# Shoutdown endpoints
-endpoints:
-  shutdown:
-    enabled: true
-
+logging:
+  level:
+    com:
+      microbank:
+        loans: DEBUG
