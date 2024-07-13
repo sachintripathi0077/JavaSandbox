@@ -1,6 +1,17 @@
 services:
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD-SHELL","redis-cli ping | grep PONG"]
+      timeout: 10s
+      retries: 10
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
   configserver:
-    image: "iamsachintripathi/configserver:S9"
+    image: "iamsachintripathi/configserver:S10"
     container_name: configserver_ms
     ports:
       - "8071:8071"
@@ -15,7 +26,7 @@ services:
       service: microservice-base-config
 
   eurekaserver:
-    image: "iamsachintripathi/eurekaserver:S9"
+    image: "iamsachintripathi/eurekaserver:S10"
     container_name: eurekaserver_ms
     ports:
       - "8070:8070"
@@ -35,7 +46,7 @@ services:
       SPRING_APPLICATION_NAME: "eurekaserver"
 
   accounts:
-    image: "iamsachintripathi/accounts:S9"
+    image: "iamsachintripathi/accounts:S10"
     container_name: accounts_ms
     ports:
       - "8080:8080"
@@ -58,7 +69,7 @@ services:
 
 
   loans:
-    image: "iamsachintripathi/loans:S9"
+    image: "iamsachintripathi/loans:S10"
     container_name: loans_ms
     ports:
       - "8090:8090"
@@ -80,7 +91,7 @@ services:
       service: microservice-eureka-config
 
   cards:
-    image: "iamsachintripathi/cards:S9"
+    image: "iamsachintripathi/cards:S10"
     container_name: cards_ms
     ports:
       - "9000:9000"
@@ -102,7 +113,7 @@ services:
       service: microservice-eureka-config
 
   gatewayserver:
-    image: "iamsachintripathi/gatewayserver:S9"
+    image: "iamsachintripathi/gatewayserver:S10"
     container_name: gatewayserver_ms
     ports:
       - "8072:8072"
@@ -119,8 +130,13 @@ services:
         condition: service_healthy
       cards:
         condition: service_healthy
+      redis:
+        condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "gatewayserver"
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_TIMEOUT: 1s
     extends:
       file: common-config.yml
       service: microservice-eureka-config

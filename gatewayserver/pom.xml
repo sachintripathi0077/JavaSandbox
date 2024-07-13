@@ -96,7 +96,7 @@
 				<version>3.3.2</version>
 				<configuration>
 					<to>
-						<image>iamsachintripathi/${project.artifactId}:S9</image>
+						<image>iamsachintripathi/${project.artifactId}:S10</image>
 					</to>
 				</configuration>
 			</plugin>
