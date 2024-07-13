@@ -3,6 +3,7 @@ package com.dev.accounts.controller;
 import com.dev.accounts.constants.AccountConstants;
 import com.dev.accounts.dto.*;
 import com.dev.accounts.service.IAccountService;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,6 +15,8 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -36,7 +39,7 @@ public class AccountsController {
 
 //    @Autowired  // using constructor autowiring instead
     private final IAccountService accountService;
-
+    private static final Logger logger = LoggerFactory.getLogger(AccountsController.class);
     public AccountsController(IAccountService iAccountService){
         this.accountService = iAccountService;
     }
@@ -164,11 +167,20 @@ public class AccountsController {
         }
     }
 
+    @Retry(name="getBuildInfo", fallbackMethod = "getBuildInfoFallback")
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo(){
+        logger.debug("getBuildInfo() method invoked");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(buildVersion);
+    }
+
+    public ResponseEntity<String> getBuildInfoFallback(Throwable throwable){
+        logger.debug("getBuildInfoFallback() method invoked");
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("0.9");
     }
 
     @GetMapping("/java-version")
