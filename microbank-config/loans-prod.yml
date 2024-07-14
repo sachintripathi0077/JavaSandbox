@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "Welcome to MicroBank LOANS related local APIs: ENVIRONMENT: PROD  "
+  contactDetails:
+    name: "Tony Stark - Developer's Lead"
+    email: "youknowme@microbank.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345

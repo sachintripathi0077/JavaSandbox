@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "Welcome to MicroBank CARDS related local APIs: ENVIRONMENT: PROD  "
+  contactDetails:
+    name: "Bruse Banner - Developer's LEad"
+    email: "iamhulk@microbank.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345
