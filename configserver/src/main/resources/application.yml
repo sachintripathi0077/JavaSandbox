@@ -18,7 +18,7 @@ spring:
           clone-on-start: true
           force-pull: true
           username: sachintripathi0077
-          password: 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
+          password: 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
 
 
 # adding management utility for monitor endpoints
