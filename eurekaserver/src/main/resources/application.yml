@@ -21,7 +21,3 @@ management:
       probes:
         enabled: true
 
-logging:
-  level:
-    pattern:
-      level: "%5p[${spring.application.name},%X{trace_id},%X{span_id}]"
